@@ -20,8 +20,10 @@ export function Hero() {
 
   return (
     <section className="relative min-h-dvh flex items-center overflow-hidden">
+    
+      {/* Desktop background — Threads (hidden on mobile) */}
       {!reducedMotion && (
-        <div className="absolute inset-0 z-0" aria-hidden="true">
+        <div className="absolute inset-0 z-0 hidden lg:block" aria-hidden="true">
           <Threads
             color={[0.11, 0.31, 0.85]}
             amplitude={2.3}
@@ -31,10 +33,12 @@ export function Hero() {
         </div>
       )}
 
-      {/* Gradient overlay on top of Threads for depth; also fallback bg when reducedMotion */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+      {/* Gradient overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-transparent pointer-events-none z-[1]" aria-hidden="true" />
+      {/* Mobile bottom fade so particles blend into the next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08080f] to-transparent pointer-events-none z-[1] lg:hidden" aria-hidden="true" />
 
-      <div className="relative z-10 px-8 sm:px-12 md:px-16 pt-20 max-w-2xl mx-auto">
+      <div className="relative z-10 px-8 sm:px-12 md:px-16 pt-20 max-w-2xl">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

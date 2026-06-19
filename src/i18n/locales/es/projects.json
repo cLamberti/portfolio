@@ -2,6 +2,7 @@
   "title": "Proyectos",
   "subtitle": "Aplicaciones reales desplegadas para clientes reales.",
   "live": "Ver sitio",
+  "docs": "Documentación",
   "code": "Código",
   "rioceleste": {
     "name": "Rio Celeste Wildlife Tours",
@@ -13,7 +14,7 @@
   },
   "carlosguide": {
     "name": "Carlos Salguera Tour Guide",
-    "description": "Migración de vanilla JS a React 18 + Vite, adoptando BrowserRouter con URLs limpias y resolviendo problemas de indexación en Google Search Console."
+    "description": "SPA en React 18 + Vite para guía turístico independiente. BrowserRouter con URLs limpias, SEO optimizado y posicionamiento activo en Google Search Console."
   },
   "leona": {
     "name": "Leona Waterfall",
@@ -25,6 +26,14 @@
   },
   "moonriver": {
     "name": "MoonRiver Travel",
-    "description": "SPA para agencia de turismo y traslados privados en Guanacaste, migrada de vanilla JS + Bootstrap a React + Vite con diseño mobile-first."
+    "description": "SPA en React + Vite para agencia de turismo y traslados privados en Guanacaste. Diseño mobile-first, navegación fluida y formulario de contacto integrado."
+  },
+  "brewcode": {
+    "name": "Brew Code — Agencia Web",
+    "description": "Sitio web de mi marca de freelance en Nuxt 3 SSG. Chatbot con IA (Groq), sistema de cotizaciones con Supabase y Drizzle ORM, PWA con soporte offline y SEO local con JSON-LD."
+  },
+  "sipauna": {
+    "name": "SIPAUNA — Préstamo de Aulas",
+    "description": "Sistema institucional de reserva de aulas para la Universidad Nacional de Costa Rica. Motor de disponibilidad en tiempo real, importación masiva desde Excel, control de roles y soporte offline como PWA."
   }
 }

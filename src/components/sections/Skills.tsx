@@ -2,11 +2,13 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 
 const skillData = {
-  frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4 (SSR)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Responsive Design'],
-  backend: ['Node.js', 'REST APIs', 'JWT', 'Zod', 'Nodemailer', 'Nitro'],
-  database: ['PostgreSQL', 'Drizzle ORM', 'Prisma ORM v7', 'Neon (serverless)'],
+  frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4 (SSR)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Pinia', 'PWA', 'Responsive Design'],
+  backend: ['Node.js', 'REST APIs', 'GraphQL', 'JWT', 'Zod', 'Nodemailer', 'Nitro'],
+  database: ['PostgreSQL', 'Supabase', 'Drizzle ORM', 'Prisma ORM v7', 'Neon (serverless)'],
   tools: ['Git / GitHub', 'Azure DevOps', 'Vercel', 'Netlify', 'Vitest', 'i18n'],
   methodologies: ['Scrum', 'Component Architecture', 'SPA Routing', 'SSR', 'Lazy Loading', 'SEO'],
+  soft: ['soft_teamwork', 'soft_communication', 'soft_problemsolving', 'soft_adaptability', 'soft_proactivity'],
+  languages: ['lang_spanish', 'lang_english'],
 }
 
 const fadeUp = {
@@ -22,11 +24,13 @@ export function Skills() {
   const { t } = useTranslation('skills')
 
   const categories = [
-    { key: 'frontend', labelKey: 'frontend' },
-    { key: 'backend', labelKey: 'backend' },
-    { key: 'database', labelKey: 'database' },
-    { key: 'tools', labelKey: 'tools' },
-    { key: 'methodologies', labelKey: 'methodologies' },
+    { key: 'frontend', labelKey: 'frontend', translate: false },
+    { key: 'backend', labelKey: 'backend', translate: false },
+    { key: 'database', labelKey: 'database', translate: false },
+    { key: 'tools', labelKey: 'tools', translate: false },
+    { key: 'methodologies', labelKey: 'methodologies', translate: false },
+    { key: 'soft', labelKey: 'soft', translate: true },
+    { key: 'languages', labelKey: 'languages', translate: true },
   ] as const
 
   return (
@@ -66,7 +70,7 @@ export function Skills() {
                     key={skill}
                     className="text-sm px-4 py-2 rounded-xl bg-[#111118] border border-[#1e1e2e] text-[#94a3b8] font-medium hover:border-blue-500/40 hover:text-white transition-all duration-200 cursor-default"
                   >
-                    {skill}
+                    {cat.translate ? t(skill) : skill}
                   </span>
                 ))}
               </div>

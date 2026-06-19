@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { Project } from '@/data/projects'
 
@@ -48,16 +48,30 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Links */}
       <div className="flex items-center gap-3 mt-auto">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors min-h-[44px] pr-2"
-          aria-label={`${t(project.nameKey.replace('projects.', ''))} — ${t('live')}`}
-        >
-          <ExternalLink size={13} />
-          {t('live')}
-        </a>
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors min-h-[44px] pr-2"
+            aria-label={`${t(project.nameKey.replace('projects.', ''))} — ${t('live')}`}
+          >
+            <ExternalLink size={13} />
+            {t('live')}
+          </a>
+        )}
+        {project.docsUrl && (
+          <a
+            href={project.docsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors min-h-[44px] pr-2"
+            aria-label={`${t(project.nameKey.replace('projects.', ''))} — ${t('docs')}`}
+          >
+            <BookOpen size={13} />
+            {t('docs')}
+          </a>
+        )}
         {project.githubUrl && (
           <a
             href={project.githubUrl}

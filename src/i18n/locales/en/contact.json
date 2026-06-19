@@ -6,7 +6,7 @@
   "message": "Message",
   "name_placeholder": "Your name",
   "email_placeholder": "you@email.com",
-  "message_placeholder": "Tell me about your project...",
+  "message_placeholder": "..",
   "submit": "Send message",
   "sending": "Sending...",
   "success_title": "Message sent!",

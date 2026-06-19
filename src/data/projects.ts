@@ -3,7 +3,8 @@ export interface Project {
   nameKey: string
   descriptionKey: string
   tags: string[]
-  liveUrl: string
+  liveUrl?: string
+  docsUrl?: string
   githubUrl?: string
   period: string
 }
@@ -56,5 +57,22 @@ export const projects: Project[] = [
     tags: ['React', 'Vite', 'Responsive Design', 'SPA'],
     liveUrl: 'https://moonrivertravel.com/',
     period: 'Jun–Nov 2025',
+  },
+  {
+    id: 'brewcode',
+    nameKey: 'projects.brewcode.name',
+    descriptionKey: 'projects.brewcode.description',
+    tags: ['Nuxt 3', 'Vue 3', 'SSG', 'Supabase', 'Drizzle ORM', 'Groq AI', 'PWA', 'SEO'],
+    liveUrl: 'https://brew-code.vercel.app/',
+    period: 'Mar–Jun 2026',
+  },
+  {
+    id: 'sipauna',
+    nameKey: 'projects.sipauna.name',
+    descriptionKey: 'projects.sipauna.description',
+    tags: ['Nuxt 4', 'Vue 3', 'GraphQL', 'Supabase', 'Pinia', 'PWA'],
+    liveUrl: 'https://sipauna.vercel.app/',
+    docsUrl: 'https://deepwiki.com/Dmong04/sipauna-webpage',
+    period: '2025–2026',
   },
 ]

@@ -5,5 +5,14 @@
   "backend": "Backend",
   "database": "Database & ORM",
   "tools": "Tools",
-  "methodologies": "Methodologies"
+  "methodologies": "Methodologies",
+  "soft": "Soft Skills",
+  "languages": "Languages",
+  "soft_teamwork": "Teamwork",
+  "soft_communication": "Effective communication",
+  "soft_problemsolving": "Problem solving",
+  "soft_adaptability": "Adaptability",
+  "soft_proactivity": "Proactivity",
+  "lang_spanish": "Spanish (native)",
+  "lang_english": "English B2"
 }

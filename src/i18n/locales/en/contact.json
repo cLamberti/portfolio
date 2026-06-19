@@ -1,0 +1,18 @@
+{
+  "title": "Contact",
+  "subtitle": "Got a project in mind? Let's talk.",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "name_placeholder": "Your name",
+  "email_placeholder": "you@email.com",
+  "message_placeholder": "Tell me about your project...",
+  "submit": "Send message",
+  "sending": "Sending...",
+  "success_title": "Message sent!",
+  "success_text": "I'll get back to you shortly.",
+  "error_title": "Something went wrong",
+  "error_text": "Try again or reach me at lamberti.christopher@gmail.com",
+  "required": "Required",
+  "invalid_email": "Invalid email"
+}

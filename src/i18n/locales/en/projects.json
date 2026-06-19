@@ -1,0 +1,30 @@
+{
+  "title": "Projects",
+  "subtitle": "Real applications deployed for real clients.",
+  "live": "Live site",
+  "code": "Code",
+  "rioceleste": {
+    "name": "Rio Celeste Wildlife Tours",
+    "description": "SPA with React 19 and TypeScript, custom router, lazy-loaded gallery, Nodemailer contact flow, and full SEO with JSON-LD structured data."
+  },
+  "jmride": {
+    "name": "JM Ride CR",
+    "description": "Full-stack architecture with Next.js 15 App Router, TypeScript, Tailwind v4, PostgreSQL on Neon, and Drizzle ORM with relational design."
+  },
+  "carlosguide": {
+    "name": "Carlos Salguera Tour Guide",
+    "description": "Migration from vanilla JS to React 18 + Vite, adopting BrowserRouter with clean URLs and fixing indexing issues in Google Search Console."
+  },
+  "leona": {
+    "name": "Leona Waterfall",
+    "description": "Full-stack architecture with Nuxt 4 SSR, custom REST API with Nitro, and PostgreSQL database managed with Prisma ORM v7."
+  },
+  "scrcr": {
+    "name": "SCRCR — Immanuel Bible Church",
+    "description": "Full-stack administrative management system built with Scrum and Azure DevOps, featuring attendance tracking, events, and role-based access control."
+  },
+  "moonriver": {
+    "name": "MoonRiver Travel",
+    "description": "SPA for a tourism agency and private transfers in Guanacaste, migrated from vanilla JS + Bootstrap to React + Vite with mobile-first design."
+  }
+}

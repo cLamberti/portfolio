@@ -1,0 +1,18 @@
+{
+  "title": "Contacto",
+  "subtitle": "¿Tenés un proyecto en mente? Escribime.",
+  "name": "Nombre",
+  "email": "Correo electrónico",
+  "message": "Mensaje",
+  "name_placeholder": "Tu nombre",
+  "email_placeholder": "tu@email.com",
+  "message_placeholder": "Contame sobre tu proyecto...",
+  "submit": "Enviar mensaje",
+  "sending": "Enviando...",
+  "success_title": "¡Mensaje enviado!",
+  "success_text": "Te respondo a la brevedad.",
+  "error_title": "Algo salió mal",
+  "error_text": "Intentá de nuevo o escribime a lamberti.christopher@gmail.com",
+  "required": "Requerido",
+  "invalid_email": "Correo inválido"
+}

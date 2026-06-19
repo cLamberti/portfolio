@@ -1,0 +1,9 @@
+{
+  "title": "About me",
+  "p1": "I'm Christopher Lamberti, a Systems Engineering student at the National University of Costa Rica and a fullstack developer with real-world project experience.",
+  "p2": "I have designed, developed, and deployed 6 web applications for real clients in Costa Rica, using modern technologies like React, Next.js, Nuxt 4, and PostgreSQL. I'm passionate about building products that solve real problems.",
+  "p3": "I work remotely, adapt quickly to new technologies, and focus on delivering clean, scalable solutions with great user experience.",
+  "location": "Costa Rica",
+  "education": "Systems Engineering — National University",
+  "availability": "Available for freelance projects"
+}

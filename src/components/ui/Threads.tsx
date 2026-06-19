@@ -146,7 +146,8 @@ export function Threads({
     if (!containerRef.current) return
     const container = containerRef.current
 
-    const renderer = new Renderer({ alpha: true })
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const renderer = new Renderer({ alpha: true, dpr })
     const gl = renderer.gl
     gl.clearColor(0, 0, 0, 0)
     gl.enable(gl.BLEND)
@@ -176,9 +177,10 @@ export function Threads({
     function resize() {
       const { clientWidth, clientHeight } = container
       renderer.setSize(clientWidth, clientHeight)
-      resolution.r = clientWidth
-      resolution.g = clientHeight
-      resolution.b = clientWidth / clientHeight
+      // Use physical pixel dimensions so the shader's pixel() fn is accurate on hi-DPI screens
+      resolution.r = gl.canvas.width
+      resolution.g = gl.canvas.height
+      resolution.b = gl.canvas.width / gl.canvas.height
     }
     window.addEventListener('resize', resize)
     resize()

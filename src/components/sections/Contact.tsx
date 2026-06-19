@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { Send, CheckCircle, AlertCircle, Github, Linkedin, Mail } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle, Github, Linkedin, Mail, Phone } from 'lucide-react'
 
 interface FormState {
   name: string
@@ -207,6 +207,12 @@ export function Contact() {
                 label: 'Email',
                 value: 'lamberti.christopher@gmail.com',
                 href: 'mailto:lamberti.christopher@gmail.com',
+              },
+              {
+                icon: Phone,
+                label: 'WhatsApp',
+                value: '+506 7024-1641',
+                href: 'https://wa.me/50670241641',
               },
               {
                 icon: Github,

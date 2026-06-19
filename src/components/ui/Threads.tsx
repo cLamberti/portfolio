@@ -135,6 +135,12 @@ export function Threads({
 }: ThreadsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const animationFrameId = useRef<number>(0)
+  const amplitudeRef = useRef(amplitude)
+  const enableMouseRef = useRef(enableMouseInteraction)
+
+  // Update refs without tearing down the GL context
+  useEffect(() => { amplitudeRef.current = amplitude }, [amplitude])
+  useEffect(() => { enableMouseRef.current = enableMouseInteraction }, [enableMouseInteraction])
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -190,12 +196,12 @@ export function Threads({
         targetMouse = [0.5, 0.5]
       }
     }
-    if (enableMouseInteraction) {
-      window.addEventListener('mousemove', handleMouseMove)
-    }
+    window.addEventListener('mousemove', handleMouseMove)
 
     function update(t: number) {
-      if (enableMouseInteraction) {
+      program.uniforms.uAmplitude.value = amplitudeRef.current
+
+      if (enableMouseRef.current) {
         const smoothing = 0.05
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0])
         currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1])
@@ -215,13 +221,11 @@ export function Threads({
     return () => {
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current)
       window.removeEventListener('resize', resize)
-      if (enableMouseInteraction) {
-        window.removeEventListener('mousemove', handleMouseMove)
-      }
+      window.removeEventListener('mousemove', handleMouseMove)
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas)
       gl.getExtension('WEBGL_lose_context')?.loseContext()
     }
-  }, [color, amplitude, distance, enableMouseInteraction])
+  }, [color, distance])
 
   return <div ref={containerRef} className="threads-container" {...rest} />
 }

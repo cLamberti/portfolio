@@ -6,19 +6,21 @@ import { Projects } from '@/components/sections/Projects'
 import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 import { Threads } from '@/components/ui/Threads'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
+
+const AMPLITUDE = { mobile: 0.4, tablet: 1.0, desktop: 1.7 } as const
 
 export default function App() {
-  const isMobile = useIsMobile()
+  const breakpoint = useBreakpoint()
 
   return (
     <div className="min-h-screen relative">
       {/* Fixed Threads — full background */}
       <div className="fixed inset-0 w-full h-full z-0">
         <Threads
-          amplitude={isMobile ? 0.4 : 1.6}
+          amplitude={AMPLITUDE[breakpoint]}
           distance={0}
-          enableMouseInteraction={!isMobile}
+          enableMouseInteraction={breakpoint === 'desktop'}
         />
       </div>
 

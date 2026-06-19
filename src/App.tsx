@@ -16,7 +16,7 @@ export default function App() {
       {/* Fixed Threads — full background */}
       <div className="fixed inset-0 w-full h-full z-0">
         <Threads
-          amplitude={isMobile ? 0.5 : 1.6}
+          amplitude={isMobile ? 0.4 : 1.6}
           distance={0}
           enableMouseInteraction={!isMobile}
         />

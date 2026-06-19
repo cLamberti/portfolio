@@ -31,31 +31,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     },
   })
 
-  await transporter.sendMail({
-    from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
-    to: process.env.CONTACT_EMAIL ?? 'lamberti.christopher@gmail.com',
-    replyTo: email,
-    subject: `Nuevo mensaje de ${name} — Portfolio`,
-    text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
-    html: `
-      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #7c3aed;">Nuevo mensaje desde el Portfolio</h2>
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td style="padding: 8px; font-weight: bold; color: #555;">Nombre:</td>
-            <td style="padding: 8px;">${name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; font-weight: bold; color: #555;">Email:</td>
-            <td style="padding: 8px;"><a href="mailto:${email}">${email}</a></td>
-          </tr>
-        </table>
-        <div style="margin-top: 16px; padding: 16px; background: #f8f8f8; border-radius: 8px;">
-          <p style="color: #333; white-space: pre-wrap;">${message}</p>
+  try {
+    await transporter.sendMail({
+      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
+      to: process.env.CONTACT_EMAIL ?? 'lamberti.christopher@gmail.com',
+      replyTo: email,
+      subject: `Nuevo mensaje de ${name} — Portfolio`,
+      text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #1d4ed8;">Nuevo mensaje desde el Portfolio</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 8px; font-weight: bold; color: #555;">Nombre:</td>
+              <td style="padding: 8px;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: bold; color: #555;">Email:</td>
+              <td style="padding: 8px;"><a href="mailto:${email}">${email}</a></td>
+            </tr>
+          </table>
+          <div style="margin-top: 16px; padding: 16px; background: #f8f8f8; border-radius: 8px;">
+            <p style="color: #333; white-space: pre-wrap;">${message}</p>
+          </div>
         </div>
-      </div>
-    `,
-  })
+      `,
+    })
+  } catch (err) {
+    console.error('[contact] SMTP error:', err)
+    return res.status(500).json({ error: 'Failed to send email' })
+  }
 
   return res.status(200).json({ ok: true })
 }

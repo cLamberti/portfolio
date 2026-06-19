@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Github, Linkedin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
@@ -67,6 +67,25 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/cLamberti"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="hidden sm:flex text-[#94a3b8] hover:text-white transition-colors"
+          >
+            <Github size={18} />
+          </a>
+          <a
+            href="https://linkedin.com/in/christopher-lamberti"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hidden sm:flex text-[#94a3b8] hover:text-white transition-colors"
+          >
+            <Linkedin size={18} />
+          </a>
+
           <button
             onClick={toggleLang}
             className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-[#1e1e2e] text-[#94a3b8] hover:text-white hover:border-blue-500/50 transition-all cursor-pointer"

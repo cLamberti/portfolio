@@ -133,13 +133,6 @@ export default function DecryptedText({
     return new Set(arr)
   }, [])
 
-  const encryptInstantly = useCallback(() => {
-    const emptySet = new Set<number>()
-    setRevealedIndices(emptySet)
-    setDisplayText(shuffleText(text, emptySet))
-    setIsDecrypted(false)
-  }, [text, shuffleText])
-
   const triggerDecrypt = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
     setIsAnimating(false)

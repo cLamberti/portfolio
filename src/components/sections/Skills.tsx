@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import DecryptedText from '../ui/DecryptedText'
+import BorderGlow from '../ui/BorderGlow'
 
 const skillData = {
   frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4 (SSR)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Pinia', 'PWA', 'Responsive Design'],
@@ -44,7 +46,7 @@ export function Skills() {
           className="text-center mb-14"
         >
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">
-            {t('title')}
+            <DecryptedText text={t('title')} animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
           </h2>
           <p className="text-[#94a3b8] text-sm sm:text-base">
             {t('subtitle')}
@@ -66,12 +68,21 @@ export function Skills() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {skillData[cat.key].map((skill) => (
-                  <span
+                  <BorderGlow
                     key={skill}
-                    className="text-sm px-4 py-2 rounded-xl bg-[#111118] border border-[#1e1e2e] text-[#94a3b8] font-medium hover:border-blue-500/40 hover:text-white transition-all duration-200 cursor-default"
+                    backgroundColor="#111118"
+                    borderRadius={10}
+                    colors={['#1e3a8a', '#3b82f6', '#818cf8']}
+                    glowColor="217 91 60"
+                    glowIntensity={1.3}
+                    glowRadius={10}
+                    edgeSensitivity={8}
+                    fillOpacity={0.08}
                   >
-                    {cat.translate ? t(skill) : skill}
-                  </span>
+                    <span className="text-sm px-4 py-2 text-[#94a3b8] font-medium cursor-default hover:text-white transition-colors duration-200 block">
+                      {cat.translate ? t(skill) : skill}
+                    </span>
+                  </BorderGlow>
                 ))}
               </div>
             </motion.div>

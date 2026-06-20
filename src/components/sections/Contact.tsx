@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Send, CheckCircle, AlertCircle, Github, Linkedin, Mail, Phone } from 'lucide-react'
+import DecryptedText from '../ui/DecryptedText'
+import BorderGlow from '../ui/BorderGlow'
 
 interface FormState {
   name: string
@@ -73,7 +75,7 @@ export function Contact() {
           className="text-center mb-14"
         >
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">
-            {t('title')}
+            <DecryptedText text={t('title')} animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
           </h2>
           <p className="text-[#94a3b8] text-sm sm:text-base">{t('subtitle')}</p>
         </motion.div>
@@ -227,23 +229,34 @@ export function Contact() {
                 href: 'https://linkedin.com/in/christopher-lamberti',
               },
             ].map(({ icon: Icon, label, value, href }) => (
-              <a
+              <BorderGlow
                 key={label}
-                href={href}
-                target={href.startsWith('mailto') ? undefined : '_blank'}
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-[#111118] border border-[#1e1e2e] hover:border-blue-500/40 transition-all duration-200 group min-h-[64px]"
+                backgroundColor="#111118"
+                borderRadius={12}
+                colors={['#1e3a8a', '#3b82f6', '#818cf8']}
+                glowColor="217 91 60"
+                glowIntensity={1.2}
+                glowRadius={14}
+                edgeSensitivity={20}
+                fillOpacity={0.08}
               >
-                <div className="w-10 h-10 rounded-lg bg-blue-950/40 border border-blue-800/30 flex items-center justify-center shrink-0">
-                  <Icon size={16} className="text-blue-400" />
-                </div>
-                <div>
-                  <p className="text-xs font-medium text-blue-400 mb-0.5">{label}</p>
-                  <p className="text-sm text-[#94a3b8] group-hover:text-white transition-colors">
-                    {value}
-                  </p>
-                </div>
-              </a>
+                <a
+                  href={href}
+                  target={href.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 group min-h-[64px]"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-950/40 border border-blue-800/30 flex items-center justify-center shrink-0">
+                    <Icon size={16} className="text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-blue-400 mb-0.5">{label}</p>
+                    <p className="text-sm text-[#94a3b8] group-hover:text-white transition-colors">
+                      <DecryptedText text={value} animateOn="view" sequential speed={70} encryptedClassName="opacity-20" />
+                    </p>
+                  </div>
+                </a>
+              </BorderGlow>
             ))}
           </motion.div>
         </div>

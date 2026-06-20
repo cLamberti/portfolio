@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { MapPin, GraduationCap, Briefcase } from 'lucide-react'
+import DecryptedText from '../ui/DecryptedText'
 
 const skillGroups = {
   Frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4', 'TypeScript', 'Tailwind CSS'],
@@ -32,7 +33,7 @@ export function About() {
           custom={0}
           className="font-heading text-3xl sm:text-4xl font-bold text-white mb-12 text-center"
         >
-          {t('title')}
+          <DecryptedText text={t('title')} animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">

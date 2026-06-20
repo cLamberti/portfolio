@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { Threads } from '../ui/Threads'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import DecryptedText from '../ui/DecryptedText'
 
 export function Hero() {
   const { t } = useTranslation('hero')
@@ -45,7 +46,7 @@ export function Hero() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-[#94a3b8] text-sm sm:text-base font-medium mb-3 tracking-widest uppercase"
         >
-          {t('greeting')}
+          <DecryptedText text={t('greeting')} animateOn="view" sequential speed={120} encryptedClassName="opacity-20" />
         </motion.p>
 
         <motion.h1
@@ -54,9 +55,10 @@ export function Hero() {
           transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
           className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight"
         >
-          Christopher{' '}
+          <DecryptedText text="Christopher" animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
+          {' '}
           <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
-            Lamberti
+            <DecryptedText text="Lamberti" animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
           </span>
         </motion.h1>
 
@@ -66,7 +68,7 @@ export function Hero() {
           transition={{ duration: 0.55, delay: 0.14, ease: 'easeOut' }}
           className="font-heading text-xl sm:text-2xl font-semibold text-blue-300 mb-6"
         >
-          {t('role')}
+          <DecryptedText text={t('role')} animateOn="view" sequential speed={110} encryptedClassName="opacity-20" />
         </motion.p>
 
         <motion.p

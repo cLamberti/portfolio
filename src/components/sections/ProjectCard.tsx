@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { ExternalLink, Github, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { Project } from '@/data/projects'
+import BorderGlow from '../ui/BorderGlow'
+import DecryptedText from '../ui/DecryptedText'
 
 interface ProjectCardProps {
   project: Project
@@ -12,13 +14,25 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const { t } = useTranslation('projects')
 
   return (
-    <motion.article
+    <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.07, ease: 'easeOut' }}
-      className="group relative flex flex-col bg-[#111118] border border-[#1e1e2e] rounded-xl p-6 hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-900/10"
+      className="group h-full"
     >
+      <BorderGlow
+        backgroundColor="#111118"
+        borderRadius={12}
+        colors={['#1e3a8a', '#3b82f6', '#818cf8']}
+        glowColor="217 91 60"
+        glowIntensity={1.4}
+        glowRadius={20}
+        edgeSensitivity={15}
+        fillOpacity={0.1}
+        className="h-full"
+      >
+      <article className="relative flex flex-col p-6 h-full">
       {/* Period badge */}
       <span className="text-[11px] font-medium text-blue-400 uppercase tracking-widest mb-3">
         {project.period}
@@ -26,7 +40,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Name */}
       <h3 className="font-heading font-semibold text-white text-lg mb-2 group-hover:text-blue-200 transition-colors">
-        {t(project.nameKey.replace('projects.', ''))}
+        <DecryptedText
+          text={t(project.nameKey.replace('projects.', ''))}
+          animateOn="view"
+          sequential
+          speed={80}
+          encryptedClassName="opacity-20"
+        />
       </h3>
 
       {/* Description */}
@@ -85,6 +105,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </a>
         )}
       </div>
-    </motion.article>
+      </article>
+      </BorderGlow>
+    </motion.div>
   )
 }

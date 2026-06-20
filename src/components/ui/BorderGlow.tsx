@@ -150,6 +150,7 @@ export default function BorderGlow({
     const card = cardRef.current
     let angle = Math.random() * 360
     card.style.setProperty('--edge-proximity', '82')
+    card.classList.add('touch-active')
 
     const tick = () => {
       angle = (angle + 0.7) % 360
@@ -160,6 +161,7 @@ export default function BorderGlow({
 
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+      card.classList.remove('touch-active')
     }
   }, [])
 

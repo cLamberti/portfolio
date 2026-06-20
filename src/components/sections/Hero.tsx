@@ -57,9 +57,7 @@ export function Hero() {
         >
           <DecryptedText text="Christopher" animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
           {' '}
-          <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
-            <DecryptedText text="Lamberti" animateOn="view" sequential speed={100} encryptedClassName="opacity-20" />
-          </span>
+          <DecryptedText text="Lamberti" animateOn="view" sequential speed={100} encryptedClassName="opacity-20" parentClassName="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent" />
         </motion.h1>
 
         <motion.p

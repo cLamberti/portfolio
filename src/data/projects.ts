@@ -71,7 +71,7 @@ export const projects: Project[] = [
     id: 'sipauna',
     nameKey: 'projects.sipauna.name',
     descriptionKey: 'projects.sipauna.description',
-    tags: ['Nuxt 4', 'Vue 3', 'GraphQL', 'Supabase', 'Pinia', 'PWA'],
+    tags: ['Nuxt 4', 'Vue 3', 'GraphQL', 'Supabase', 'Pinia', 'PWA', 'Academic'],
     liveUrl: 'https://sipauna.vercel.app/',
     docsUrl: 'https://deepwiki.com/Dmong04/sipauna-webpage',
     period: '2025–2026',

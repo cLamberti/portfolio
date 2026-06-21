@@ -80,7 +80,7 @@ export const projects: Project[] = [
     id: 'express-food',
     nameKey: 'projects.expressfood.name',
     descriptionKey: 'projects.expressfood.description',
-    tags: ['Android', 'Kotlin', 'Firebase', 'Firestore', 'Room DB', 'Supabase', 'MVVM', 'Scrum'],
+    tags: ['Android', 'Kotlin', 'Firebase', 'Firestore', 'Room DB', 'Supabase', 'MVVM', 'Scrum', 'Academic'],
     githubUrl: 'https://github.com/Dmong04/ExpressFood',
     docsUrl: 'https://deepwiki.com/Dmong04/ExpressFood',
     period: 'May–Jun 2026',

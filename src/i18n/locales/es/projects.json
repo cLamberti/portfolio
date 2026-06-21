@@ -38,6 +38,6 @@
   },
   "expressfood": {
     "name": "ExpressFood",
-    "description": "App Android de pedidos de comida con interfaz dual para clientes y administradores. Google Auth con Firebase, base de datos local con Room (offline-first), actualizaciones en tiempo real con Firestore y sincronización en background con WorkManager. Desarrollada con Scrum en Notion."
+    "description": "Proyecto académico universitario. App Android de pedidos de comida con interfaz dual para clientes y administradores. Google Auth con Firebase, base de datos local con Room (offline-first), actualizaciones en tiempo real con Firestore y sincronización en background con WorkManager. Metodología Scrum en Notion."
   }
 }

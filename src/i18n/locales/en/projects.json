@@ -35,5 +35,9 @@
   "sipauna": {
     "name": "SIPAUNA — Classroom Booking",
     "description": "Institutional classroom booking system for Universidad Nacional de Costa Rica. Real-time availability engine, bulk Excel import, role-based access control, and offline PWA support."
+  },
+  "expressfood": {
+    "name": "ExpressFood",
+    "description": "Android food ordering app with dual interface for clients and admins. Google Auth via Firebase, offline-first local storage with Room DB, real-time order tracking with Firestore, and background sync via WorkManager. Built with Scrum on Notion."
   }
 }

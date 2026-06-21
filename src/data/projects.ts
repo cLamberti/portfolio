@@ -76,4 +76,13 @@ export const projects: Project[] = [
     docsUrl: 'https://deepwiki.com/Dmong04/sipauna-webpage',
     period: '2025–2026',
   },
+  {
+    id: 'express-food',
+    nameKey: 'projects.expressfood.name',
+    descriptionKey: 'projects.expressfood.description',
+    tags: ['Android', 'Kotlin', 'Firebase', 'Firestore', 'Room DB', 'Supabase', 'MVVM', 'Scrum'],
+    githubUrl: 'https://github.com/Dmong04/ExpressFood',
+    docsUrl: 'https://deepwiki.com/Dmong04/ExpressFood',
+    period: 'May–Jun 2026',
+  },
 ]

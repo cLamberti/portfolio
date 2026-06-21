@@ -35,5 +35,9 @@
   "sipauna": {
     "name": "SIPAUNA — Préstamo de Aulas",
     "description": "Sistema institucional de reserva de aulas para la Universidad Nacional de Costa Rica. Motor de disponibilidad en tiempo real, importación masiva desde Excel, control de roles y soporte offline como PWA."
+  },
+  "expressfood": {
+    "name": "ExpressFood",
+    "description": "App Android de pedidos de comida con interfaz dual para clientes y administradores. Google Auth con Firebase, base de datos local con Room (offline-first), actualizaciones en tiempo real con Firestore y sincronización en background con WorkManager. Desarrollada con Scrum en Notion."
   }
 }

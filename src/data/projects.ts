@@ -48,6 +48,7 @@ export const projects: Project[] = [
     descriptionKey: 'projects.scrcr.description',
     tags: ['Fullstack', 'Scrum', 'Azure DevOps', 'Vitest', 'RBAC'],
     liveUrl: 'https://scrcr.vercel.app/',
+    docsUrl: 'https://lucychc.github.io/GuiaUsuarioSCRCR/',
     period: 'Feb 2025–Jun 2026',
   },
   {

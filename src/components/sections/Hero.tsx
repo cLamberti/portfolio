@@ -67,6 +67,10 @@ export function Hero() {
           className="font-heading text-xl sm:text-2xl font-semibold text-blue-300 mb-6"
         >
           <DecryptedText text={t('role')} animateOn="view" sequential speed={110} encryptedClassName="opacity-20" />
+          <br />
+          <span className="text-base sm:text-lg font-medium text-blue-300/60 tracking-widest uppercase">
+            <DecryptedText text={t('subrole')} animateOn="view" sequential speed={90} encryptedClassName="opacity-20" />
+          </span>
         </motion.p>
 
         <motion.p

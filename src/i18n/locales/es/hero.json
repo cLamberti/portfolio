@@ -1,6 +1,7 @@
 {
   "greeting": "Hola, soy",
   "role": "FullStack Developer",
+  "subrole": "Software Engineer",
   "subtitle": "Desarrollo web para negocios costarricenses y equipos remotos. React, Next.js y Node.js.",
   "cta_projects": "Ver proyectos",
   "cta_contact": "Contactar"

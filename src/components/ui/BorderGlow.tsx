@@ -85,7 +85,6 @@ export default function BorderGlow({
   fillOpacity = 0.5,
 }: BorderGlowProps) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const rafRef = useRef<number | null>(null)
 
   const getCenterOfElement = useCallback((el: HTMLDivElement) => {
     const { width, height } = el.getBoundingClientRect()
@@ -143,26 +142,16 @@ export default function BorderGlow({
     })
   }, [animated])
 
-  // Mobile/tablet: continuous rotating glow via rAF
+  // Mobile/tablet: static glow at a random angle — no rAF loop to avoid N×60fps DOM writes
   useEffect(() => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
     if (!isTouch || !cardRef.current) return
     const card = cardRef.current
-    let angle = Math.random() * 360
+    const angle = Math.random() * 360
     card.style.setProperty('--edge-proximity', '82')
+    card.style.setProperty('--cursor-angle', `${angle.toFixed(2)}deg`)
     card.classList.add('touch-active')
-
-    const tick = () => {
-      angle = (angle + 0.7) % 360
-      card.style.setProperty('--cursor-angle', `${angle.toFixed(2)}deg`)
-      rafRef.current = requestAnimationFrame(tick)
-    }
-    rafRef.current = requestAnimationFrame(tick)
-
-    return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-      card.classList.remove('touch-active')
-    }
+    return () => { card.classList.remove('touch-active') }
   }, [])
 
   const glowVars = buildGlowVars(glowColor, glowIntensity)

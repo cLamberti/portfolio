@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState, useRef, useMemo, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { useReduceAnimations } from '../../context/MotionContext'
 
 const styles = {
   wrapper: {
@@ -51,6 +52,7 @@ export default function DecryptedText({
   animateOn = 'hover',
   clickMode = 'once',
 }: DecryptedTextProps) {
+  const reduceAnimations = useReduceAnimations()
   const isViewMode = animateOn === 'view' || animateOn === 'inViewHover'
 
   const [displayText, setDisplayText] = useState(() =>
@@ -353,6 +355,10 @@ export default function DecryptedText({
       : animateOn === 'click'
         ? { onClick: handleClick }
         : {}
+
+  if (reduceAnimations) {
+    return <span className={parentClassName}><span className={className}>{text}</span></span>
+  }
 
   return (
     <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps}>

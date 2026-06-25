@@ -7,14 +7,16 @@ import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 import { Threads } from '@/components/ui/Threads'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { useReduceAnimations } from '@/context/MotionContext'
+import { useLowEndDevice } from '@/hooks/useLowEndDevice'
 
 const AMPLITUDE = { mobile: 0.4, tablet: 1.0, desktop: 1.7 } as const
 
 export default function App() {
   const breakpoint = useBreakpoint()
-  const reduceAnimations = useReduceAnimations()
-  const showThreads = !reduceAnimations && breakpoint !== 'mobile'
+  const lowEnd = useLowEndDevice()
+  // Threads is gated on performance only — not on prefers-reduced-motion,
+  // since that preference controls UI animations (framer-motion, DecryptedText), not backgrounds.
+  const showThreads = !lowEnd && breakpoint !== 'mobile'
 
   return (
     <div className="min-h-screen relative">

@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { Threads } from '../ui/Threads'
 import { useIsMobile } from '../../hooks/useIsMobile'
-import { useReduceAnimations } from '../../context/MotionContext'
+import { useLowEndDevice } from '../../hooks/useLowEndDevice'
 import DecryptedText from '../ui/DecryptedText'
 
 export function Hero() {
   const { t } = useTranslation('hero')
-  const reduceAnimations = useReduceAnimations()
   const isMobile = useIsMobile(640)
+  const lowEnd = useLowEndDevice()
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -25,7 +25,7 @@ export function Hero() {
     <section className="relative min-h-dvh flex items-center overflow-hidden">
     
       {/* Background Threads (only on sm+ non-low-end screens) */}
-      {!reduceAnimations && !isMobile && (
+      {!lowEnd && !isMobile && (
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Threads
             color={[0.11, 0.31, 0.85]}

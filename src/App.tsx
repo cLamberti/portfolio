@@ -18,16 +18,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Fixed Threads — full background (disabled on mobile and low-end devices) */}
-      {showThreads && (
-        <div className="fixed inset-0 w-full h-full z-0">
+      {/* Fixed background — WebGL Threads on capable devices, CSS gradient on mobile/low-end */}
+      <div className="fixed inset-0 w-full h-full z-0">
+        {showThreads ? (
           <Threads
             amplitude={AMPLITUDE[breakpoint]}
             distance={0}
             enableMouseInteraction={breakpoint === 'desktop'}
           />
-        </div>
-      )}
+        ) : (
+          <div className="static-bg w-full h-full" />
+        )}
+      </div>
 
       {/* Scrollable content */}
       <div className="relative z-10">

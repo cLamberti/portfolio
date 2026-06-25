@@ -1,15 +1,10 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
-import { Threads } from '../ui/Threads'
-import { useIsMobile } from '../../hooks/useIsMobile'
-import { useLowEndDevice } from '../../hooks/useLowEndDevice'
 import DecryptedText from '../ui/DecryptedText'
 
 export function Hero() {
   const { t } = useTranslation('hero')
-  const isMobile = useIsMobile(640)
-  const lowEnd = useLowEndDevice()
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -23,23 +18,10 @@ export function Hero() {
 
   return (
     <section className="relative min-h-dvh flex items-center overflow-hidden">
-    
-      {/* Background Threads (only on sm+ non-low-end screens) */}
-      {!lowEnd && !isMobile && (
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <Threads
-            color={[0.11, 0.31, 0.85]}
-            amplitude={2.3}
-            distance={0}
-            enableMouseInteraction={true}
-          />
-        </div>
-      )}
 
-      {/* Gradient overlay for readability */}
+      {/* Gradient overlay for readability over the App-level Threads background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-transparent pointer-events-none z-[1]" aria-hidden="true" />
-      {/* Bottom fade so particles blend into the next section (hidden once local Threads is visible) */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08080f] to-transparent pointer-events-none z-[1] sm:hidden" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08080f] to-transparent pointer-events-none z-[1]" aria-hidden="true" />
 
       <div className="relative z-10 px-8 sm:px-12 md:px-16 pt-20 max-w-2xl">
         <motion.p

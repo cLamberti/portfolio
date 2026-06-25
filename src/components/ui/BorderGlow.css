@@ -1,4 +1,19 @@
-﻿.border-glow-card {
+﻿/* Register --cursor-angle as an animatable <angle> so CSS keyframes can interpolate it */
+@property --cursor-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-rotate-slow {
+  to { --cursor-angle: 360deg; }
+}
+
+.border-glow-card.touch-active {
+  animation: border-rotate-slow 8s linear infinite;
+}
+
+.border-glow-card {
   --edge-proximity: 0;
   --cursor-angle: 45deg;
   --edge-sensitivity: 30;
@@ -35,9 +50,9 @@
   z-index: -1;
 }
 
-.border-glow-card:not(:hover):not(.sweep-active):not(.touch-active)::before,
-.border-glow-card:not(:hover):not(.sweep-active):not(.touch-active)::after,
-.border-glow-card:not(:hover):not(.sweep-active):not(.touch-active) > .edge-light {
+.border-glow-card:not(:hover):not(.touch-active)::before,
+.border-glow-card:not(:hover):not(.touch-active)::after,
+.border-glow-card:not(:hover):not(.touch-active) > .edge-light {
   opacity: 0;
   transition: opacity 0.75s ease-in-out;
 }

@@ -1,4 +1,4 @@
-﻿import { useRef, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import './BorderGlow.css'
 
 interface HSL { h: number; s: number; l: number }
@@ -33,26 +33,6 @@ function buildGradientVars(colors: string[]): Record<string, string> {
   }
   vars['--gradient-base'] = `linear-gradient(${colors[0]} 0 100%)`
   return vars
-}
-
-function easeOutCubic(x: number) { return 1 - Math.pow(1 - x, 3) }
-function easeInCubic(x: number) { return x * x * x }
-
-interface AnimateOptions {
-  start?: number; end?: number; duration?: number; delay?: number
-  ease?: (x: number) => number; onUpdate: (v: number) => void; onEnd?: () => void
-}
-
-function animateValue({ start = 0, end = 100, duration = 1000, delay = 0, ease = easeOutCubic, onUpdate, onEnd }: AnimateOptions) {
-  const t0 = performance.now() + delay
-  function tick() {
-    const elapsed = performance.now() - t0
-    const t = Math.min(elapsed / duration, 1)
-    onUpdate(start + (end - start) * ease(t))
-    if (t < 1) requestAnimationFrame(tick)
-    else if (onEnd) onEnd()
-  }
-  setTimeout(() => requestAnimationFrame(tick), delay)
 }
 
 interface BorderGlowProps {
@@ -110,6 +90,16 @@ export default function BorderGlow({
     return degrees
   }, [getCenterOfElement])
 
+  // On mount: slow CSS rotation via @keyframes (all devices).
+  // On desktop, pointer move overrides the angle inline; pointer leave resets it so CSS resumes.
+  useEffect(() => {
+    if (!animated || !cardRef.current) return
+    const card = cardRef.current
+    card.style.setProperty('--edge-proximity', '82')
+    card.classList.add('touch-active')
+    return () => { card.classList.remove('touch-active') }
+  }, [animated])
+
   const handlePointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const card = cardRef.current
     if (!card) return
@@ -121,37 +111,12 @@ export default function BorderGlow({
     card.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`)
   }, [getEdgeProximity, getCursorAngle])
 
-  // Desktop: one-shot sweep animation on mount (when animated=true)
-  useEffect(() => {
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-    if (!animated || isTouch || !cardRef.current) return
+  // Reset inline overrides so the CSS rotation animation resumes
+  const handlePointerLeave = useCallback(() => {
     const card = cardRef.current
-    const angleStart = 110; const angleEnd = 465
-    card.classList.add('sweep-active')
-    card.style.setProperty('--cursor-angle', `${angleStart}deg`)
-    animateValue({ duration: 500, onUpdate: v => card.style.setProperty('--edge-proximity', String(v)) })
-    animateValue({ ease: easeInCubic, duration: 1500, end: 50, onUpdate: v => {
-      card.style.setProperty('--cursor-angle', `${(angleEnd - angleStart) * (v / 100) + angleStart}deg`)
-    }})
-    animateValue({ ease: easeOutCubic, delay: 1500, duration: 2250, start: 50, end: 100, onUpdate: v => {
-      card.style.setProperty('--cursor-angle', `${(angleEnd - angleStart) * (v / 100) + angleStart}deg`)
-    }})
-    animateValue({ ease: easeInCubic, delay: 2500, duration: 1500, start: 100, end: 0,
-      onUpdate: v => card.style.setProperty('--edge-proximity', String(v)),
-      onEnd: () => card.classList.remove('sweep-active'),
-    })
-  }, [animated])
-
-  // Mobile/tablet: static glow at a random angle — no rAF loop to avoid N×60fps DOM writes
-  useEffect(() => {
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-    if (!isTouch || !cardRef.current) return
-    const card = cardRef.current
-    const angle = Math.random() * 360
+    if (!card) return
+    card.style.removeProperty('--cursor-angle')
     card.style.setProperty('--edge-proximity', '82')
-    card.style.setProperty('--cursor-angle', `${angle.toFixed(2)}deg`)
-    card.classList.add('touch-active')
-    return () => { card.classList.remove('touch-active') }
   }, [])
 
   const glowVars = buildGlowVars(glowColor, glowIntensity)
@@ -160,6 +125,7 @@ export default function BorderGlow({
     <div
       ref={cardRef}
       onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
       className={`border-glow-card ${className}`}
       style={{
         '--card-bg': backgroundColor,

@@ -4,8 +4,9 @@ export function useLowEndDevice(): boolean {
   return useMemo(() => {
     if (typeof window === 'undefined') return false
     const memory = (navigator as unknown as { deviceMemory?: number }).deviceMemory
-    if (memory !== undefined) return memory <= 2
-    // deviceMemory not available (Safari / Firefox) — fall back to core count
-    return navigator.hardwareConcurrency <= 4
+    // Only flag truly low-end: Chrome/Android with <=1 GB RAM.
+    // Safari/Firefox don't expose deviceMemory — assume capable.
+    // Avoid hardwareConcurrency fallback: it's unreliable on desktop (i3/i5 have 4 cores).
+    return memory !== undefined && memory <= 1
   }, [])
 }

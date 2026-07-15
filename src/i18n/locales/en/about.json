@@ -5,5 +5,10 @@
   "p3": "I work remotely, adapt quickly to new technologies, and focus on delivering clean, scalable solutions with great user experience.",
   "location": "Costa Rica",
   "education": "Systems Engineering — National University",
-  "availability": "Available for freelance projects"
+  "availability": "Available for freelance projects",
+  "stat_projects_value": "6",
+  "stat_projects_label": "Apps delivered",
+  "stat_location_label": "Location",
+  "stat_education_label": "Education",
+  "stat_availability_label": "Availability"
 }

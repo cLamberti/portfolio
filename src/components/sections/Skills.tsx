@@ -1,14 +1,16 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import DecryptedText from '../ui/DecryptedText'
-import BorderGlow from '../ui/BorderGlow'
+import SkillBadge from '../ui/SkillBadge'
 
 const skillData = {
-  frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4 (SSR)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'Pinia', 'PWA', 'Responsive Design'],
-  backend: ['Node.js', 'REST APIs', 'GraphQL', 'JWT', 'Zod', 'Nodemailer', 'Nitro'],
-  database: ['PostgreSQL', 'Supabase', 'Drizzle ORM', 'Prisma ORM v7', 'Neon (serverless)'],
-  tools: ['Git / GitHub', 'Azure DevOps', 'Vercel', 'Netlify', 'Vitest', 'i18n'],
-  methodologies: ['Scrum', 'Component Architecture', 'SPA Routing', 'SSR', 'Lazy Loading', 'SEO'],
+  frontend: ['JavaScript', 'TypeScript', 'HTML & CSS', 'React', 'Next.js', 'Vue 3', 'Nuxt 4 (SSR)', 'Angular', 'Astro', 'Tailwind CSS', 'Bootstrap', 'jQuery', 'Pinia', 'PWA', 'Responsive Design'],
+  backend: ['Node.js', 'Express', 'NestJS', 'Spring Boot', 'Jakarta EE', 'REST APIs', 'GraphQL', 'WebSocket', 'JWT', 'OAuth', 'PayPal API', 'JPA / Hibernate', 'Zod', 'Nodemailer', 'Nitro'],
+  database: ['PostgreSQL', 'MySQL', 'SQL Server', 'Oracle DB', 'SQL', 'MongoDB', 'SQLite', 'Firebase', 'Supabase', 'Drizzle ORM', 'Prisma ORM v7', 'Neon (serverless)'],
+  tools: ['Git / GitHub', 'GitHub Actions', 'CI/CD', 'Azure DevOps', 'Azure', 'Vercel', 'Netlify', 'Figma', 'Postman', 'Vite', 'Vitest', 'Jest', 'JUnit', 'Pytest', 'React Testing Library', 'Lighthouse', 'Android Studio', 'Google Play Console', 'Google Maps API', 'Trello', 'WordPress', 'Bash', 'PowerShell', 'i18n'],
+  mobile: ['React Native', 'Expo', 'Kotlin', 'Android', 'iOS'],
+  other: ['Python', 'Java', 'Go', 'PHP', 'C++', 'Arduino', 'ESP32'],
+  methodologies: ['Scrum', 'SOLID Principles', 'UI/UX', 'Performance Optimization', 'Component Architecture', 'SPA Routing', 'SSR', 'Lazy Loading', 'SEO'],
   soft: ['soft_teamwork', 'soft_communication', 'soft_problemsolving', 'soft_adaptability', 'soft_proactivity'],
   languages: ['lang_spanish', 'lang_english'],
 }
@@ -30,6 +32,8 @@ export function Skills() {
     { key: 'backend', labelKey: 'backend', translate: false },
     { key: 'database', labelKey: 'database', translate: false },
     { key: 'tools', labelKey: 'tools', translate: false },
+    { key: 'mobile', labelKey: 'mobile', translate: false },
+    { key: 'other', labelKey: 'other', translate: false },
     { key: 'methodologies', labelKey: 'methodologies', translate: false },
     { key: 'soft', labelKey: 'soft', translate: true },
     { key: 'languages', labelKey: 'languages', translate: true },
@@ -68,21 +72,9 @@ export function Skills() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {skillData[cat.key].map((skill) => (
-                  <BorderGlow
-                    key={skill}
-                    backgroundColor="#111118"
-                    borderRadius={10}
-                    colors={['#1e3a8a', '#3b82f6', '#818cf8']}
-                    glowColor="217 91 60"
-                    glowIntensity={1.3}
-                    glowRadius={10}
-                    edgeSensitivity={8}
-                    fillOpacity={0.08}
-                  >
-                    <span className="text-sm px-4 py-2 text-[#94a3b8] font-medium cursor-default hover:text-white transition-colors duration-200 block">
-                      {cat.translate ? t(skill) : skill}
-                    </span>
-                  </BorderGlow>
+                  <SkillBadge key={skill}>
+                    {cat.translate ? t(skill) : skill}
+                  </SkillBadge>
                 ))}
               </div>
             </motion.div>

@@ -5,5 +5,10 @@
   "p3": "Trabajo de forma remota, me adapto rápido a nuevas tecnologías y me enfoco en entregar soluciones limpias, escalables y con buena experiencia de usuario.",
   "location": "Costa Rica",
   "education": "Ingeniería en Sistemas — Universidad Nacional",
-  "availability": "Disponible para proyectos freelance"
+  "availability": "Disponible para proyectos freelance",
+  "stat_projects_value": "6",
+  "stat_projects_label": "Aplicaciones entregadas",
+  "stat_location_label": "Ubicación",
+  "stat_education_label": "Educación",
+  "stat_availability_label": "Disponibilidad"
 }

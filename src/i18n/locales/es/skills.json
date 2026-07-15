@@ -5,6 +5,8 @@
   "backend": "Backend",
   "database": "Base de datos y ORM",
   "tools": "Herramientas",
+  "mobile": "Mobile",
+  "other": "Otros lenguajes",
   "methodologies": "Metodologías",
   "soft": "Soft Skills",
   "languages": "Idiomas",

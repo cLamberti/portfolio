@@ -1,14 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { MapPin, GraduationCap, Briefcase } from 'lucide-react'
+import { MapPin, GraduationCap, Briefcase, FolderGit2 } from 'lucide-react'
 import DecryptedText from '../ui/DecryptedText'
-
-const skillGroups = {
-  Frontend: ['React', 'Next.js', 'Vue 3', 'Nuxt 4', 'TypeScript', 'Tailwind CSS'],
-  Backend: ['Node.js', 'REST APIs', 'Nitro', 'JWT', 'Zod'],
-  Database: ['PostgreSQL', 'Drizzle ORM', 'Prisma ORM', 'Neon'],
-  Tools: ['Git', 'GitHub', 'Azure DevOps', 'Vercel', 'Netlify'],
-}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -52,6 +45,48 @@ export function About() {
                 {para}
               </motion.p>
             ))}
+          </div>
+
+          {/* Highlights grid */}
+          <div className="grid grid-cols-2 gap-4">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={1}
+              className="rounded-xl bg-[#111118] border border-[#1e1e2e] p-5"
+            >
+              <FolderGit2 size={18} className="text-blue-400 mb-3" />
+              <p className="text-2xl font-heading font-bold text-white">{t('stat_projects_value')}</p>
+              <p className="text-xs text-[#94a3b8] mt-1">{t('stat_projects_label')}</p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={2}
+              className="rounded-xl bg-[#111118] border border-[#1e1e2e] p-5"
+            >
+              <MapPin size={18} className="text-blue-400 mb-3" />
+              <p className="text-sm font-semibold text-white leading-snug">{t('location')}</p>
+              <p className="text-xs text-[#94a3b8] mt-1">{t('stat_location_label')}</p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={3}
+              className="rounded-xl bg-[#111118] border border-[#1e1e2e] p-5"
+            >
+              <GraduationCap size={18} className="text-blue-400 mb-3" />
+              <p className="text-sm font-semibold text-white leading-snug">{t('education')}</p>
+              <p className="text-xs text-[#94a3b8] mt-1">{t('stat_education_label')}</p>
+            </motion.div>
 
             <motion.div
               variants={fadeUp}
@@ -59,49 +94,12 @@ export function About() {
               whileInView="visible"
               viewport={{ once: true }}
               custom={4}
-              className="flex flex-col gap-3 pt-2"
+              className="rounded-xl bg-[#111118] border border-blue-500/30 p-5"
             >
-              <div className="flex items-center gap-3 text-sm text-[#94a3b8]">
-                <MapPin size={16} className="text-blue-400 shrink-0" />
-                <span>{t('location')}</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-[#94a3b8]">
-                <GraduationCap size={16} className="text-blue-400 shrink-0" />
-                <span>{t('education')}</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-blue-300 font-medium">
-                <Briefcase size={16} className="text-blue-400 shrink-0" />
-                <span>{t('availability')}</span>
-              </div>
+              <Briefcase size={18} className="text-blue-400 mb-3" />
+              <p className="text-sm font-semibold text-blue-300 leading-snug">{t('availability')}</p>
+              <p className="text-xs text-[#94a3b8] mt-1">{t('stat_availability_label')}</p>
             </motion.div>
-          </div>
-
-          {/* Skills grid */}
-          <div className="space-y-5">
-            {Object.entries(skillGroups).map(([group, skills], gi) => (
-              <motion.div
-                key={group}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={gi + 1}
-              >
-                <p className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2">
-                  {group}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs px-3 py-1.5 rounded-lg bg-[#111118] border border-[#1e1e2e] text-[#94a3b8] font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </div>

@@ -11,13 +11,14 @@ function getBreakpoint(): Breakpoint {
 }
 
 export function useBreakpoint(): Breakpoint {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>(getBreakpoint)
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>('mobile')
 
   useEffect(() => {
     const mqMobile = window.matchMedia('(max-width: 767px)')
     const mqTablet = window.matchMedia('(min-width: 768px) and (max-width: 1023px)')
 
     const handler = () => setBreakpoint(getBreakpoint())
+    handler()
 
     mqMobile.addEventListener('change', handler)
     mqTablet.addEventListener('change', handler)

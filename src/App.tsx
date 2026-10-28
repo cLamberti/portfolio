@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import i18n from '@/i18n'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
@@ -14,6 +16,8 @@ const AMPLITUDE = { mobile: 0.4, tablet: 1.0, desktop: 1.7 } as const
 export default function App() {
   const breakpoint = useBreakpoint()
   const lowEnd = useLowEndDevice()
+  // Hydrates in 'es' (same as the prerender), then switches to the saved/browser language.
+  useEffect(() => { void i18n.changeLanguage() }, [])
   // Threads is gated on performance only — not on prefers-reduced-motion,
   // since that preference controls UI animations (framer-motion, DecryptedText), not backgrounds.
   const showThreads = !lowEnd && breakpoint !== 'mobile'

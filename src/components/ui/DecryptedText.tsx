@@ -55,13 +55,12 @@ export default function DecryptedText({
   const reduceAnimations = useReduceAnimations()
   const isViewMode = animateOn === 'view' || animateOn === 'inViewHover'
 
-  const [displayText, setDisplayText] = useState(() =>
-    isViewMode ? quickScramble(text) : text
-  )
+  const [displayText, setDisplayText] = useState(text)
   const [isAnimating, setIsAnimating] = useState(false)
   const [revealedIndices, setRevealedIndices] = useState(new Set<number>())
   const [hasAnimated, setHasAnimated] = useState(false)
   const [isDecrypted, setIsDecrypted] = useState(!isViewMode && animateOn !== 'click')
+  const [mounted, setMounted] = useState(false)
   const [direction, setDirection] = useState<'forward' | 'reverse'>('forward')
 
   const containerRef = useRef<HTMLSpanElement>(null)
@@ -314,14 +313,17 @@ export default function DecryptedText({
     const currentRef = containerRef.current
     if (currentRef) observer.observe(currentRef)
     return () => { if (currentRef) observer.unobserve(currentRef) }
-  }, [animateOn, hasAnimated, triggerDecrypt])
+  }, [animateOn, hasAnimated, triggerDecrypt, mounted])
 
   // Reset when text prop changes (language switch).
-  // Skipped on initial mount via isMountedRef to avoid undoing the scrambled init state.
+  // On first mount it only flips to the animated markup: the server and the hydration render are plain text
+  // (the scramble is random, so rendering it there would mismatch).
   // The IntersectionObserver handles the first trigger; this handles subsequent text changes.
   useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true
+      if (isViewMode) setDisplayText(quickScramble(text))
+      setMounted(true)
       return
     }
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -356,7 +358,7 @@ export default function DecryptedText({
         ? { onClick: handleClick }
         : {}
 
-  if (reduceAnimations) {
+  if (reduceAnimations || !mounted) {
     return <span className={parentClassName}><span className={className}>{text}</span></span>
   }
 

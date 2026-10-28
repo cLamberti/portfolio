@@ -42,16 +42,24 @@ i18n
         footer: enFooter,
       },
     },
+    // Fixed to 'es' so SSR and the hydration render match; App applies the detected language afterwards.
+    lng: 'es',
     fallbackLng: 'es',
     defaultNS: 'nav',
     detection: {
       order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
+      caches: [], // the detector would overwrite the saved language with 'es' on init; saved below
       lookupLocalStorage: 'portfolio-lang',
     },
     interpolation: {
       escapeValue: false,
     },
   })
+
+if (typeof window !== 'undefined') {
+  i18n.on('languageChanged', (lng) => {
+    try { localStorage.setItem('portfolio-lang', lng) } catch { /* storage blocked */ }
+  })
+}
 
 export default i18n

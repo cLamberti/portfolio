@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[#1e1e2e] py-8">
       <div className="px-8 sm:px-12 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-[#94a3b8] text-sm">
+        <p className="text-[#94a3b8] text-sm" suppressHydrationWarning>
           © {year} Christopher Lamberti — {t('rights')}
         </p>
 

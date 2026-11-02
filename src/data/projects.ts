@@ -64,7 +64,7 @@ export const projects: Project[] = [
     nameKey: 'projects.brewcode.name',
     descriptionKey: 'projects.brewcode.description',
     tags: ['Nuxt 3', 'Vue 3', 'SSG', 'Supabase', 'Drizzle ORM', 'Groq AI', 'PWA', 'SEO'],
-    liveUrl: 'https://brew-code.vercel.app/',
+    liveUrl: 'https://www.brew-code.xyz',
     period: 'Mar–Jun 2026',
   },
   {
